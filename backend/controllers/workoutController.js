@@ -3,12 +3,13 @@ const mongoose = require("mongoose");
 
 // Create a workout
 const createWorkout = async (req, res) => {
-    const { title, load, reps } = req.body;
+    const { title, load, reps, day } = req.body;
 
     let emptyFields = [];
     if (!title) emptyFields.push("title");
     if (!load) emptyFields.push("load");
     if (!reps) emptyFields.push("reps");
+    if(!day) emptyFields.push("day")
     if (emptyFields.length > 0)
         return res.status(400).json({
             message: "Please fill in all the fields.",
@@ -17,7 +18,7 @@ const createWorkout = async (req, res) => {
 
     try {
         const user_id = req.user._id  // Created this in middleware
-        const newWorkout = await WorkoutModel.create({ title, load, reps, user_id });
+        const newWorkout = await WorkoutModel.create({ title, load, reps, user_id, day });
         res.status(200).json(newWorkout);
     } catch (error) {
         res.status(400).json({
@@ -30,7 +31,13 @@ const createWorkout = async (req, res) => {
 const getAllWorkouts = async (req, res) => {
     try {
         const user_id = req.user._id
-        const workouts = await WorkoutModel.find({ user_id }).sort({ createdAt: -1 }); // Sort in descending order
+        const { day } = req.query
+        let workouts
+        if(day) {
+            workouts = await WorkoutModel.find({ user_id, day }).sort({ createdAt: -1 })
+        } else {
+            workouts = await WorkoutModel.find({ user_id }).sort({ createdAt: -1 }); // Sort in descending order
+        }
         res.status(200).json(workouts);
     } catch (error) {
         res.status(500).json({

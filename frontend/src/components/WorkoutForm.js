@@ -7,6 +7,7 @@ const WorkoutForm = () => {
     const [title, setTitle] = useState('')
     const [load, setLoad] = useState('')
     const [reps, setReps] = useState('')
+    const [day, setDay] = useState('')
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
     const { user } = useAuthContext()
@@ -14,12 +15,12 @@ const WorkoutForm = () => {
     async function handleSubmit(e) {
         e.preventDefault()
 
-        if(!user){
+        if (!user) {
             setError('You must be logged in.')
             return
         }
 
-        const workout = { title, load, reps }
+        const workout = { title, load, reps, day }
         const response = await fetch('/api/workouts', {
             method: 'POST',
             body: JSON.stringify(workout), // cannot sent an object directly so need to convert it to JSON
@@ -39,6 +40,7 @@ const WorkoutForm = () => {
             setTitle('')
             setLoad('')
             setReps('')
+            setDay('')
             setEmptyFields([])
             console.log("New workout added", json)
             dispatch({ type: "CREATE_WORKOUT", payload: json })
@@ -55,7 +57,7 @@ const WorkoutForm = () => {
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
                 className={Array.isArray(emptyFields) && emptyFields.includes('title') ? 'error' : ''}
-                placeholder='E.g Bench Press' />
+                placeholder='e.g Bench Press' />
 
             <label>Load (in kg):</label>
             <input
@@ -71,7 +73,24 @@ const WorkoutForm = () => {
                 onChange={(e) => setReps(e.target.value)}
                 value={reps}
                 className={Array.isArray(emptyFields) && emptyFields.includes('reps') ? 'error' : ''}
-                placeholder='25' />
+                placeholder='5' />
+
+            <label>Day:</label>
+            <select
+                onChange={(e) => 
+                    setDay(e.target.value)}
+                value={day}
+                className={Array.isArray(emptyFields) && emptyFields.includes('day') ? 'error' : ''}
+            >
+                <option value=""> Select a day</option>
+                <option value="Sunday">Sunday</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+            </select>
 
             <button>Add Workout</button>
             {error && <div className='error'>{error}</div>}
