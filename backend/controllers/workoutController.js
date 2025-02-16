@@ -17,7 +17,7 @@ const createWorkout = async (req, res) => {
 
     try {
         const user_id = req.user._id  // Created this in middleware
-        const newWorkout = await WorkoutModel.create({ title, load, reps, user_id});
+        const newWorkout = await WorkoutModel.create({ title, load, reps, user_id });
         res.status(200).json(newWorkout);
     } catch (error) {
         res.status(400).json({

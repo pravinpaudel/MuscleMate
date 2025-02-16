@@ -54,7 +54,7 @@ const WorkoutForm = () => {
                 type="text"
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
-                className={emptyFields.includes('title') ? 'error' : ''}
+                className={Array.isArray(emptyFields) && emptyFields.includes('title') ? 'error' : ''}
                 placeholder='E.g Bench Press' />
 
             <label>Load (in kg):</label>
@@ -62,7 +62,7 @@ const WorkoutForm = () => {
                 type="number"
                 onChange={(e) => setLoad(e.target.value)}
                 value={load}
-                className={emptyFields.includes('load') ? 'error' : ''}
+                className={Array.isArray(emptyFields) && emptyFields.includes('load') ? 'error' : ''}
                 placeholder='25' />
 
             <label>Reps:</label>
@@ -70,7 +70,7 @@ const WorkoutForm = () => {
                 type="number"
                 onChange={(e) => setReps(e.target.value)}
                 value={reps}
-                className={emptyFields.includes('reps') ? 'error' : ''}
+                className={Array.isArray(emptyFields) && emptyFields.includes('reps') ? 'error' : ''}
                 placeholder='25' />
 
             <button>Add Workout</button>

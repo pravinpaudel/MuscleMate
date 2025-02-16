@@ -13,7 +13,7 @@ const WorkoutSchema = new Schema({
         type: Number,
         required: true
     },
-    user: {
+    user_id: {
         type: String,
         required: true
     }
