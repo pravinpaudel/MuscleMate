@@ -51,7 +51,7 @@ const WorkoutForm = () => {
         <form className='create' onSubmit={handleSubmit}>
             <h3>Add a New Workout</h3>
 
-            <label>Exercise Title:</label>
+            <label>Exercise Title</label>
             <input
                 type="text"
                 onChange={(e) => setTitle(e.target.value)}
@@ -80,7 +80,7 @@ const WorkoutForm = () => {
                 onChange={(e) => 
                     setDay(e.target.value)}
                 value={day}
-                className={Array.isArray(emptyFields) && emptyFields.includes('day') ? 'error' : ''}
+                className={Array.isArray(emptyFields) && emptyFields.includes('day') ? 'error filter-select' : 'filter-select'}
             >
                 <option value=""> Select a day</option>
                 <option value="Sunday">Sunday</option>

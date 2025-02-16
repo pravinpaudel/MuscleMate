@@ -45,22 +45,24 @@ const Home = () => {
     // </div>
 
     <div>
-      <h3>Workouts</h3>
-      <label>Filter by Day:</label>
-      <select
-        onChange={(e) => setSelectedDay(e.target.value)}
-        value={selectedDay}
-      >
-        <option value="">All Days</option>
-        <option value="Sunday">Sunday</option>
-        <option value="Monday">Monday</option>
-        <option value="Tuesday">Tuesday</option>
-        <option value="Wednesday">Wednesday</option>
-        <option value="Thursday">Thursday</option>
-        <option value="Friday">Friday</option>
-        <option value="Saturday">Saturday</option>
-      </select>
-
+        <h3>Workouts</h3>
+        <div className='filter'>
+        <label>Filter by Day:</label>
+        <select
+          className='filter-selectDay'
+          onChange={(e) => setSelectedDay(e.target.value)}
+          value={selectedDay}
+        >
+          <option value="">All Days</option>
+          <option value="Sunday">Sunday</option>
+          <option value="Monday">Monday</option>
+          <option value="Tuesday">Tuesday</option>
+          <option value="Wednesday">Wednesday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Friday">Friday</option>
+          <option value="Saturday">Saturday</option>
+        </select>
+      </div>
       {/* {error && <div className="error">{error}</div>} */}
       <div className='home'>
         <div className='workouts'>
@@ -72,7 +74,7 @@ const Home = () => {
                 <WorkoutDetails key={workout._id} workout={workout} />
               ))
             ) : (
-              <p>No workouts available.</p>
+              <h2>No workouts available.</h2>
             )
           )}
         </div>

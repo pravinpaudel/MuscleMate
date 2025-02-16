@@ -7,14 +7,19 @@
   --error: #e7195a;
 }
 
-body {
-  background: #f1f1f1;
-  margin: 0;
+.header {
   font-family: "Poppins";
+  text-align: center;
+  letter-spacing: 1px;
+}
+body {
+  background: #eeeeee;
+  margin: 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
 }
 
 header {
-  background: #fff;
+  background: #ffffff;
 }
 
 header .container {
@@ -38,6 +43,21 @@ header a {
 }
 
 /* homepage */
+.filter {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-selectDay {
+  max-width: fit-content;
+  outline: none;
+  border: 1px solid #e5e7eb;
+  padding: 10px;
+  border-radius: 6px;
+}
+
 .home {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -46,7 +66,7 @@ header a {
 
 .workout-details {
   background: #fff;
-  border-radius: 4px;
+  border-radius: 10px;
   margin: 20px auto;
   padding: 20px;
   position: relative;
@@ -60,7 +80,7 @@ header a {
 }
 
 .workout-details p {
-  margin: 0;
+  margin: 5px;
   font-size: 0.9em;
   color: #555;
 }
@@ -88,8 +108,19 @@ input {
   margin-bottom: 20px;
   width: 100%;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 6px;
   box-sizing: border-box;
+}
+
+.filter-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 form button {
@@ -146,3 +177,4 @@ form.login {
   background: #fff;
   border-radius: 4px;
 }
+
