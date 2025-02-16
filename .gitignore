@@ -16,8 +16,6 @@ dist/
 build/
 
 # Other files to ignore
-.DS_Store
+*.DS_Store
 coverage/
 
-# .gitignore
-frontend1/
