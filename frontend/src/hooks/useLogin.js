@@ -10,7 +10,7 @@ export const useLogin = () => {
         setError(null)
         setIsLoading(true)
 
-        const response = await fetch('/api/user/login', {
+        const response = await fetch('https://musclemate-amber.vercel.app/api/user/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })

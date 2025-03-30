@@ -13,7 +13,7 @@ const WorkoutDetails = ({ workout }) => {
     }
     
     try {
-      const response = await fetch('/api/workouts/' + workout._id, {
+      const response = await fetch('https://musclemate-amber.vercel.app/api/workouts/' + workout._id, {
         method: 'DELETE',
         headers:{
           'Authorization': `Bearer ${user.token}`

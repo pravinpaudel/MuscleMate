@@ -21,7 +21,7 @@ const WorkoutForm = () => {
         }
 
         const workout = { title, load, reps, day }
-        const response = await fetch('/api/workouts', {
+        const response = await fetch('https://musclemate-amber.vercel.app/api/workouts', {
             method: 'POST',
             body: JSON.stringify(workout), // cannot sent an object directly so need to convert it to JSON
             headers: {
