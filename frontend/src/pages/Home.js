@@ -13,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     const fetchWorkouts = async () => {
       setLoading(true)
-      let url = '/api/workouts'
+      let url = 'https://musclemate-amber.vercel.app/api/workouts'
       if (selectedDay) {
         url += `?day=${selectedDay}`
       }
