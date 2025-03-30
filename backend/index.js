@@ -3,10 +3,19 @@ const dotenv = require('dotenv')
 const workoutRoutes = require('./routes/workouts')
 const userRoutes = require('./routes/users')
 const mongoose = require('mongoose')
+const cors = require('cors');
 dotenv.config()
 
 // Set up app
 const app = express()
+
+// Configure CORS to allow requests from your frontend's origin
+const corsOptions = {
+    origin: 'https://muscle-mate-self.vercel.app', // Your frontend's URL
+    methods: 'GET,POST,PUT,DELETE',
+    allowedHeaders: 'Content-Type,Authorization',
+};
+app.use(cors(corsOptions));
 
 // Middleware
 app.use(express.json())
